@@ -1,0 +1,25 @@
+<template>
+    <lightning-card  title="（基礎）">
+        
+        <!-- ToDo作成 -->
+        <div class="slds-p-around_medium">
+            <h3 class="slds-text-heading_small">ToDoの作成</h3>
+            <lightning-input type="text" label="内容" name="description" onchange={changedInput} class="slds-p-vertical_small"></lightning-input>
+            <lightning-button variant="brand" label="作成" onclick={clickedCreate} class="slds-p-vertical_small"></lightning-button>
+        </div>
+        <!-- /ToDo作成 -->
+
+        <!-- ToDo一覧 -->
+        <div class="slds-p-around_medium">
+            <h3 class="slds-text-heading_small">ToDo一覧</h3>
+            <div class="todo-item-wrapper" key={todo.id} for:each={todos} for:item="todo">
+                <div class="description">{todo.description}</div>
+                <div class="action">
+                    <lightning-button-icon variant="base" icon-name="utility:delete" data-id={todo.id} onclick={clickedDelete} class="slds-m-left_xx-small"></lightning-button-icon>
+                </div>
+            </div>
+        </div>
+        <!-- /ToDo一覧 -->
+
+    </lightning-card>
+</template>

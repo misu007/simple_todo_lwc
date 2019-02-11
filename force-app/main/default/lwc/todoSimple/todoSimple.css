@@ -1,0 +1,13 @@
+.todo-item-wrapper {
+    display: list-item;
+    margin: 8px 32px;
+}
+
+.todo-item-wrapper .description {
+    display: inline-block;
+    font-size: 1rem;
+}
+
+.todo-item-wrapper .action {
+    display: inline-block;
+}

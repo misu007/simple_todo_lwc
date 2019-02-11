@@ -1,0 +1,21 @@
+{
+    "compilerOptions": {
+        "experimentalDecorators": true,
+        "baseUrl": ".",
+        "paths": {
+            "c/todo-simple": [
+                "todoSimple/todoSimple.js"
+            ],
+            "c/todo-simple2": [
+                "todoSimple2/todoSimple2.js"
+            ],
+            "c/todo-with-s-object": [
+                "todoWithSObject/todoWithSObject.js"
+            ]
+        }
+    },
+    "include": [
+        "**/*",
+        "../../../../.sfdx/typings/lwc/**/*.d.ts"
+    ]
+}

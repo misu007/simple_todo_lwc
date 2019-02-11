@@ -1,0 +1,57 @@
+<template>
+    <lightning-card  title="（応用）">
+        
+        <!-- ToDo作成 -->
+        <div class="slds-p-around_medium">
+            <h3>新規ToDo</h3>
+            <lightning-input type="text" label="内容" name="description" onchange={changedInput} class="slds-p-vertical_small"></lightning-input>
+            <lightning-button variant="brand" label="作成" onclick={clickedCreate} class="slds-p-vertical_small"></lightning-button>
+        </div> 
+        <!-- /ToDo作成 -->
+
+        <!-- ToDo一覧 -->
+        <div class="slds-p-around_medium">
+            <h3>ToDo一覧</h3>
+            <lightning-tabset>
+                
+                <!-- ToDo(未完了) -->
+                <lightning-tab label="未完了">
+                    <div class="todo-item-wrapper" key={todo.id} for:each={notYetTodos} for:item="todo">
+                        <div class="description">{todo.description}</div>
+                        <div class="action">
+                            <lightning-button-icon variant="base" icon-name="utility:delete" data-id={todo.id} onclick={clickedDelete} class="slds-m-left_xx-small"></lightning-button-icon>
+                            <lightning-button-icon variant="brand" icon-name="utility:check" data-id={todo.id} onclick={clickedChangeComplete} class="slds-m-left_xx-small"></lightning-button-icon>
+                        </div>
+                    </div>
+                </lightning-tab>
+                <!-- /ToDo(未完了) -->
+
+                <!-- ToDo(完了) -->
+                <lightning-tab label="完了">
+                    <div class="todo-item-wrapper" key={todo.id} for:each={doneTodos} for:item="todo">
+                        <div class="description">{todo.description}</div>
+                        <div class="action">
+                            <lightning-button-icon variant="base" icon-name="utility:delete" data-id={todo.id} onclick={clickedDelete} class="slds-m-left_xx-small"></lightning-button-icon>
+                        </div>
+                    </div>
+                </lightning-tab>
+                <!-- /ToDo(完了) -->
+
+                <!-- ToDo(すべて) -->
+                <lightning-tab label="すべて">
+                    <div class="todo-item-wrapper" key={todo.id} for:each={todos} for:item="todo">
+                        <div class="description">{todo.description}</div>
+                        <div class="action">
+                            <lightning-button-icon variant="base" icon-name="utility:delete" data-id={todo.id} onclick={clickedDelete} class="slds-m-left_xx-small"></lightning-button-icon>
+                            <lightning-button-icon if:false={todo.complete} variant="brand" icon-name="utility:check" data-id={todo.id} onclick={clickedChangeComplete} class="slds-m-left_xx-small"></lightning-button-icon>
+                        </div>
+                    </div>
+                </lightning-tab>
+                <!-- /ToDo(すべて) -->
+
+            </lightning-tabset>
+        </div>
+        <!-- /ToDo一覧 -->
+
+    </lightning-card>
+</template>

@@ -1,0 +1,28 @@
+<template>
+    <lightning-card title="（Salesforce連携）">
+        
+        <!-- ToDo作成 -->
+        <div class="slds-p-around_medium">
+            <h3>ToDoの作成</h3>
+            <lightning-input type="text" label="タイトル" name="subject" onchange={changedInput} class="slds-p-vertical_small"></lightning-input>
+            <lightning-input type="text" label="内容" name="description" onchange={changedInput} class="slds-p-vertical_small"></lightning-input>
+            <lightning-button variant="brand" label="作成" onclick={clickedCreate} class="slds-p-vertical_small"></lightning-button>
+        </div>
+        <!-- /ToDo作成 -->
+
+        <!-- ToDo一覧 -->
+        <div class="slds-p-around_medium">
+            <h3>ToDo一覧</h3>
+            <template if:true={todos.data}>
+                <div class="todo-item-wrapper" key={todo.Id} for:each={todos.data} for:item="todo">
+                    <div class="description">{todo.Subject} - {todo.Description}</div>
+                    <div class="action">
+                        <lightning-button-icon variant="base" icon-name="utility:delete" data-id={todo.Id} onclick={clickedDelete} class="slds-m-left_xx-small"></lightning-button-icon>
+                    </div>
+                </div>
+            </template>
+        </div>
+        <!-- /ToDo一覧 -->
+
+    </lightning-card>
+</template>
